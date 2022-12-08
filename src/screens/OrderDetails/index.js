@@ -1,21 +1,40 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import orders from '../../../assets/data/orders'
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import BasketDishItems from '../../components/BasketListItem'
+import orders from '../../../assets/data/orders.json'
+import restuarants from '../../../assets/data/restaurants.json'
 
-const index = () => {
-    const order = orders[0]
+const order = orders[0]
+
+const OrderDetailsHeader = () => {
   return (
     <View>
-        {/* <View>
-            <Image  source={{ uri: order.Restuarant.image }} style={styles.image}/>
+        <View style={styles.page}>
+            <Image  source={{ uri: order.Restaurant.image }} style={styles.image}/>
         </View>
-        <View>
-            <Text>{order.Restuarant.name}</Text>
-        </View> */}
+        <View style={styles.container}>
+            <Text style={styles.title}>{order.Restaurant.name}</Text>
+            <Text style={styles.subtitle}>{order.status} &#8226; 2 days ago</Text>
+            <Text style={styles.menuTitle}>Your Orders</Text>
+        </View>
       <Text>index</Text>
     </View>
   )
-}
+};
+ const OrderDetails = ()=>{
+  return(
+    <FlatList 
+    ListHeaderComponent={OrderDetailsHeader}
+    data={restuarants[0].dishes}
+    renderItem={({item})=> <BasketDishItems  basketDish={item}/>}
+    />
+  )
+ }
 
-export default index
+export default OrderDetails;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  image:{
+    width: "100%",
+    height:30,
+  }
+})
