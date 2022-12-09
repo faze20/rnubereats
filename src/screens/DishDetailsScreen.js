@@ -8,7 +8,6 @@ import { useState } from 'react'
 const DishDetailsScreen = () => {
   const [quantityValue , setQuantityValue] = useState(1)
   const dish = restuarants[0].dishes[0]
-  console.log(dish)
   const onMinus =()=>{
     if(quantityValue >1){
       setQuantityValue(quantityValue-1)

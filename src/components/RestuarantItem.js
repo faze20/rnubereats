@@ -1,8 +1,14 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View , Pressable} from 'react-native';
+import {useNavigation } from '@react-navigation/native'
 
 const RestuarantItem = ({restuarant})=>{
+  const navigation = useNavigation()
+
+  const onPress = ()=>{
+    navigation.navigate('Restuarant' , {id: restuarant.id})
+  }
     return(
-      <View  style={styles.restuarantContainer} >
+      <Pressable onPress={onPress} style={styles.restuarantContainer} >
         <Image  source={{uri : restuarant.image}}  style={styles.image} />
         <View style={styles.row}>
             <View>
@@ -13,7 +19,7 @@ const RestuarantItem = ({restuarant})=>{
                 <Text>{restuarant.deliveryFee}  </Text>
             </View>
         </View>
-     </View>
+     </Pressable>
     )       
   }
 
@@ -48,6 +54,6 @@ const RestuarantItem = ({restuarant})=>{
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:"lightgray",
-        borderRadius:"20"
+        borderRadius:20,
     },
   });

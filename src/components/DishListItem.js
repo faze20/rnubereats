@@ -10,7 +10,6 @@ const DishListItem = ({dish}) => {
             <Text style={styles.imageprice}>${dish.price}</Text>
         </View>
         {dish.image && <Image source={{ uri: dish.image}} style={styles.image}/> }
-        {/* <Image source={{ uri: dish.image}} style={styles.image}/> */}
     </View>
   )
 }
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         fontSize: 16,
         letterSpacing: 0.5
-
     },
     description:{
         color: 'gray',
